@@ -11,6 +11,9 @@ all:
 check:
 	@$(SWIPL) -q -g 'use_module(library(clitable)),clitable([[successfully,installed]]),halt(0)' -t 'halt(1)'
 
+install:
+	echo "(none)"
+
 test: check
 
 package:
