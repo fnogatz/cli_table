@@ -27,7 +27,7 @@ default_options(Default_Options) :-
     top('═'), top_left('╔'), top_mid('╤'), top_right('╗'),
     bottom('═'), bottom_left('╚'), bottom_mid('╧'), bottom_right('╝'),
     space(' '), left('║'), mid('│'), right('║'),
-    mid('─'), mid_left('╟'), mid_mid('┼'), mid_right('╢')
+    mid_space('─'), mid_left('╟'), mid_mid('┼'), mid_right('╢')
   ].
 
 add_headers_to_cols(Options, Cols, Cols_With_Headers) :-
@@ -41,7 +41,7 @@ print_header(Options, ColWidths) :-
   print_char_row(Options, ColWidths, [top, top_left, top_mid, top_right]),
   ( option(head(Header), Options) ->
     print_row(Options, Header, ColWidths),
-    print_char_row(Options, ColWidths, [mid, mid_left, mid_mid, mid_right])
+    print_char_row(Options, ColWidths, [mid_space, mid_left, mid_mid, mid_right])
   ; true ).
 
 print_footer(Options, ColWidths) :-
@@ -52,7 +52,7 @@ print_char_row(Options, ColWidths, Identifiers) :-
   option(space(OriginalSpace), Options),
   atom_length(OriginalSpace, OriginalSpace_Length),
   apply_length(OriginalSpace_Length, Space, Space_),
-  merge_options([space(Space_), left(Left), middle(Mid), right(Right)], Options, Char_Row_Options),
+  merge_options([space(Space_), left(Left), mid(Mid), right(Right)], Options, Char_Row_Options),
   maplist(mock_cell(Space), ColWidths, CellMocks),
   print_row(Char_Row_Options, CellMocks, ColWidths).
 
@@ -67,18 +67,18 @@ option_char(Options, Option, Char) :-
 print_row(Options, [First|Cells], [FirstWidth|ColWidths]) :-
   print_first_cell(Options, First, FirstWidth),
   maplist(print_cell(Options), Cells, ColWidths),
-  option(right(Char), Options, '║'),
+  option(right(Char), Options),
   write(Char),
   nl.
 
 print_first_cell(Options, Cell, ColWidth) :-
-  option(left(Char), Options, '║'),
-  merge_options([middle(Char)], Options, Options_For_First),
+  option(left(Char), Options),
+  merge_options([mid(Char)], Options, Options_For_First),
   print_cell(Options_For_First, Cell, ColWidth).
 
 print_cell(Options, Cell, ColWidth) :-
-  option(space(Space), Options, ' '),
-  option(middle(Middle), Options, '│'),
+  option(space(Space), Options),
+  option(mid(Middle), Options),
   Width is ColWidth,
   Center = '~t~w~t',
   atomic_list_concat([Center, '~', Width, '|'], Format),

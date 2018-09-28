@@ -44,5 +44,5 @@ The style can be changed by setting the appropriate chars in the `Options` list.
 top('═'), top_left('╔'), top_mid('╤'), top_right('╗'),
 bottom('═'), bottom_left('╚'), bottom_mid('╧'), bottom_right('╝'),
 space(' '), left('║'), mid('│'), right('║'),
-mid('─'), mid_left('╟'), mid_mid('┼'), mid_right('╢')
+mid_space('─'), mid_left('╟'), mid_mid('┼'), mid_right('╢')
 ```
