@@ -49,9 +49,16 @@ print_footer(Options, ColWidths) :-
 
 print_char_row(Options, ColWidths, Identifiers) :-
   maplist(option_char(Options), Identifiers, [Space, Left, Mid, Right]),
-  merge_options([space(Space), left(Left), middle(Mid), right(Right)], Options, Char_Row_Options),
+  option(space(OriginalSpace), Options),
+  atom_length(OriginalSpace, OriginalSpace_Length),
+  apply_length(OriginalSpace_Length, Space, Space_),
+  merge_options([space(Space_), left(Left), middle(Mid), right(Right)], Options, Char_Row_Options),
   maplist(mock_cell(Space), ColWidths, CellMocks),
   print_row(Char_Row_Options, CellMocks, ColWidths).
+
+apply_length(Length, Space, Space_With_Length) :-
+  atomic_list_concat(['~`', Space, 't~', Length, '|'], Format),
+  format(atom(Space_With_Length), Format, []).
 
 option_char(Options, Option, Char) :-
   KV =.. [Option, Char],
