@@ -57,6 +57,9 @@ print_char_row(Options, ColWidths, Identifiers) :-
   print_row(Char_Row_Options, CellMocks, ColWidths).
 
 apply_length(Length, Space, Space_With_Length) :-
+  atom_length(Space, 0), !,
+  apply_length(Length, ' ', Space_With_Length).
+apply_length(Length, Space, Space_With_Length) :-
   atomic_list_concat(['~`', Space, 't~', Length, '|'], Format),
   format(atom(Space_With_Length), Format, []).
 
