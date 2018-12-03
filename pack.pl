@@ -1,6 +1,6 @@
 name(clitable).
 
-version('1.0.4').
+version('1.0.5').
 download('https://github.com/fnogatz/clitable/releases/*.zip').
 
 title('Pretty unicode tables for the CLI with Prolog').
