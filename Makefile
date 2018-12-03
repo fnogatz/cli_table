@@ -8,13 +8,11 @@ SWIPL := swipl
 all:
 	echo "clitable installed"
 
-check:
-	@$(SWIPL) -q -g 'use_module(library(clitable)),clitable([[successfully,installed]]),halt(0)' -t 'halt(1)'
-
 install:
 	echo "(none)"
 
-test: check
+test:
+	@$(SWIPL) -q -g 'main,halt(0)' -t 'halt(1)' -s test/test.pl
 
 package:
 	tar cvzf $(packfile) prolog pack.pl README.md LICENSE

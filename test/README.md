@@ -15,18 +15,15 @@ This produces a TAP compatible output like the following:
 ```
 TAP version 13
 1..1
-ok 1 - [[a,bb,ccc], [111,22,3]]
+ok 1 - clitable([[a,bb,ccc], [111,22,3]])
 ```
 
-The identifier given in the square brackets is the given input data.
+The identifier is the tested call with the mentioned input data.
 
 ## Define Tests
 
-In the file `tests.pl` new tests can be specified in the following form using the `{|clitable|| ... |}` quasi-quotation:
+In the file `tests.pl` new tests can be specified in the following form:
 
 ```prolog
-Input_Data:
-{|clitable||
-... expected result ...
-|}.
+clitable(Input) -> Expected.
 ```
