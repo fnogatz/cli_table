@@ -1,3 +1,4 @@
+:- encoding(utf8).
 :- module(clitable, [
     clitable/1,
     clitable/2
