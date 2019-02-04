@@ -5,8 +5,12 @@ packfile = clitable-$(version).tgz
 
 SWIPL := swipl
 
-all:
-	echo "clitable installed"
+all: test
+
+version:
+	echo $(version)
+
+check: test
 
 install:
 	echo "(none)"
@@ -14,8 +18,8 @@ install:
 test:
 	@$(SWIPL) -q -g 'main,halt(0)' -t 'halt(1)' -s test/test.pl
 
-package:
-	tar cvzf $(packfile) prolog pack.pl README.md LICENSE
+package: test
+	tar cvzf $(packfile) prolog test pack.pl README.md LICENSE
 
-release:
+release: test
 	hub release create -m v$(version) v$(version)
