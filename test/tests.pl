@@ -1,3 +1,5 @@
+:- encoding(utf8).
+
 clitable([[a,b,c]]) -> `
 ╔═══╤═══╤═══╗
 ║ a │ b │ c ║
