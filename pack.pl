@@ -10,3 +10,4 @@ packager('Falco Nogatz','fnogatz@gmail.com').
 
 home('https://github.com/fnogatz/clitable').
 
+requires(tap).
