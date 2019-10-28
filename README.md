@@ -12,6 +12,8 @@ It can be installed with `pack_install/1`:
 ?- pack_install(clitable).
 ```
 
+Only for development purposes [`library(tap)`](https://github.com/fnogatz/tap) is required. It can be installed by calling `?- pack_install(tap).` from within SWI-Prolog.
+
 ## Usage
 
 This module exports the two predicates `clitable(+Data)` and `clitable(+Data,+Options)`.
