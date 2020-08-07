@@ -9,19 +9,19 @@ This pack is available from the [add-on registry of SWI-Prolog](http://www.swi-p
 It can be installed with `pack_install/1`:
 
 ```prolog
-?- pack_install(clitable).
+?- pack_install(cli_table).
 ```
 
 Only for development purposes [`library(tap)`](https://github.com/fnogatz/tap) is required. It can be installed by calling `?- pack_install(tap).` from within SWI-Prolog.
 
 ## Usage
 
-This module exports the two predicates `clitable(+Data)` and `clitable(+Data,+Options)`.
+This module exports the two predicates `cli_table(+Data)` and `cli_table(+Data,+Options)`.
 
 ```prolog
-:- use_module(library(clitable)).
+:- use_module(library(cli_table)).
 ?- Data = [[a,bb,ccc], [111,22,3]],
-   clitable(Data).
+   cli_table(Data).
 ╔═════╤════╤═════╗
 ║  a  │ bb │ ccc ║
 ║ 111 │ 22 │  3  ║
@@ -29,7 +29,7 @@ This module exports the two predicates `clitable(+Data)` and `clitable(+Data,+Op
 
 ?- Data = [[a,bb,ccc], [111,22,3]],
    Head = ['First', 'Second', 'Third'],
-   clitable(Data, [head(Head)]).
+   cli_table(Data, [head(Head)]).
 ╔═══════╤════════╤═══════╗
 ║ First │ Second │ Third ║
 ╟───────┼────────┼───────╢

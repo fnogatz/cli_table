@@ -1,21 +1,21 @@
 :- encoding(utf8).
-:- module(clitable, [
-    clitable/1,
-    clitable/2
+:- module(cli_table, [
+    cli_table/1,
+    cli_table/2
   ]).
 
-clitable(Rows) :-
-  clitable(Rows, []).
+cli_table(Rows) :-
+  cli_table(Rows, []).
 
-clitable(Rows, Options) :-
+cli_table(Rows, Options) :-
   transpose(Rows, Cols),
   add_headers_to_cols(Options, Cols, Cols_),
   maplist(get_col_width, Cols_, ColWidths),
   default_options(Default_Options),
   merge_options(Options, Default_Options, Options_),
-  clitable(Rows, Options_, ColWidths).
+  cli_table(Rows, Options_, ColWidths).
 
-clitable(Rows, Options, ColWidths) :-
+cli_table(Rows, Options, ColWidths) :-
   print_header(Options, ColWidths),
   forall(
     member(Row, Rows),

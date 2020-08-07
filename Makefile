@@ -1,7 +1,7 @@
 .PHONY: all test
 
 version := $(shell swipl -q -s pack -g 'version(V),writeln(V)' -t halt)
-packfile = clitable-$(version).tgz
+packfile = cli_table-$(version).tgz
 
 SWIPL := swipl
 

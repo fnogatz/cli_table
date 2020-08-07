@@ -1,6 +1,6 @@
 :- asserta(user:file_search_path(library, 'prolog')).
 
-:- use_module(library(clitable)).
+:- use_module(library(cli_table)).
 
 % 10 is newline character
 term_expansion(Callable -> [10|Expected], (Head :- Test)) :-

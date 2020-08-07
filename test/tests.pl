@@ -1,19 +1,19 @@
 :- encoding(utf8).
 
-clitable([[a,b,c]]) -> `
+cli_table([[a,b,c]]) -> `
 ╔═══╤═══╤═══╗
 ║ a │ b │ c ║
 ╚═══╧═══╧═══╝
 `.
 
-clitable([[a,bb,ccc], [111,22,3]]) -> `
+cli_table([[a,bb,ccc], [111,22,3]]) -> `
 ╔═════╤════╤═════╗
 ║  a  │ bb │ ccc ║
 ║ 111 │ 22 │  3  ║
 ╚═════╧════╧═════╝
 `.
 
-clitable([[a,bb,ccc], [111,22,3]], [head(['One','Two','Three'])]) -> `
+cli_table([[a,bb,ccc], [111,22,3]], [head(['One','Two','Three'])]) -> `
 ╔═════╤═════╤═══════╗
 ║ One │ Two │ Three ║
 ╟─────┼─────┼───────╢
@@ -22,7 +22,7 @@ clitable([[a,bb,ccc], [111,22,3]], [head(['One','Two','Three'])]) -> `
 ╚═════╧═════╧═══════╝
 `.
 
-clitable([[a,b,c]], [mid(''), top_mid(''), bottom_mid('')]) -> `
+cli_table([[a,b,c]], [mid(''), top_mid(''), bottom_mid('')]) -> `
 ╔═════════╗
 ║ a  b  c ║
 ╚═════════╝
